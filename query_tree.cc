@@ -95,7 +95,6 @@ int main(int argc, char **argv)
   {
     AvlTree<SequenceMap> a_tree;
     QueryTree(db_filename, a_tree);
-    a_tree.printTree();
     readCin(a_tree);
   }
   else
