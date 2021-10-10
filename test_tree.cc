@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 namespace {
@@ -18,7 +19,43 @@ namespace {
 //  empty.
 template <typename TreeType>
 void TestTree(const string &db_filename, const string &seq_filename, TreeType &a_tree) {
-  // Code for running Part2(b)  
+    
+    std::string line;
+    std::ifstream db(db_filename);
+
+    if (db.is_open())
+    {
+      for (int x = 0; x < 10; x++)
+      {
+        std::getline(db, line);
+      }
+
+      while (std::getline(db, line))
+      {
+        std::size_t pos = 0;
+
+        bool first = true;
+        std::string enz_acro;
+        std::string reco_seq;
+
+        while ((pos = line.find("/")) != std::string::npos)
+        {
+          std::string token = line.substr(0, pos);
+          if (token.length() > 0 && first)
+          {
+            enz_acro = token;
+            first = false;
+          }
+          else if (token.length() > 0)
+          {
+            a_tree.insert(SequenceMap(enz_acro, token));
+          } 
+          line.erase(0, pos + 1);
+        }
+      }
+    }
+
+    std::cout << a_tree.numberNodes(a_tree.root) << std::endl;
 }
 
 }  // namespace

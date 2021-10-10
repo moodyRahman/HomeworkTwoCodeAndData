@@ -185,6 +185,23 @@ public:
 
     AvlNode *root;
 
+
+    int numberNodes( AvlNode *node )
+    {
+        if (node == nullptr)
+        {
+            return 0;
+        }
+
+        int lsum, rsum;
+        
+        lsum = numberNodes(node->left);
+        rsum = numberNodes(node->right);
+
+        return 1 + lsum + rsum;
+    }
+
+
     AvlNode *getAcronym(std::string sequence, AvlNode *node)
     {
         if (node == nullptr)

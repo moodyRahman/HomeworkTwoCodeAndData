@@ -16,7 +16,7 @@ namespace {
 // @a_tree: an input tree of the type TreeType. It is assumed to be
 //  empty.
 template <typename TreeType> void TestTree(const string &db_filename, const string &seq_filename, TreeType &a_tree) {
-  // Code for running Part2(c)  
+  std::cout << "" << std::endl;  
 }
 
 }  // namespace

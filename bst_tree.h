@@ -191,6 +191,21 @@ class BinarySearchTree
 
     BinaryNode *root;
 
+    int numberNodes( BinaryNode *node )
+    {
+        if (node == nullptr)
+        {
+            return 0;
+        }
+
+        int lsum, rsum;
+        
+        lsum = numberNodes(node->left);
+        rsum = numberNodes(node->right);
+
+        return 1 + lsum + rsum;
+    }
+
     BinaryNode* getAcronym( std::string sequence, BinaryNode *node )
     {
         if (node==nullptr)
