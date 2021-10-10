@@ -169,6 +169,14 @@ public:
         }
     }
 
+    int resetCounter()
+    {
+        std::cout << "in the function" << std::endl;
+        std::cout << arbit_counter << std::endl;
+        
+        return arbit_counter;
+    }
+
     struct AvlNode
     {
         Comparable element;
@@ -182,23 +190,39 @@ public:
         AvlNode(Comparable &&ele, AvlNode *lt, AvlNode *rt, int h = 0)
             : element{std::move(ele)}, left{lt}, right{rt}, height{h} {}
     };
-
+    int arbit_counter = 0;
     AvlNode *root;
+
+    int internalPathLength()
+    {
+        return internalPathLength(this->root, 0);
+    }
+
+    int internalPathLength(AvlNode *node, int pathdist)
+    {
+        arbit_counter++;
+        if (node == nullptr)
+        {
+            return 0;
+        }
+        return pathdist + internalPathLength(node->left, pathdist + 1) + internalPathLength(node->right, pathdist + 1);
+    }
 
     int numberNodes()
     {
         return numberNodes(this->root);
     }
 
-    int numberNodes( AvlNode *node )
+    int numberNodes(AvlNode *node)
     {
+        arbit_counter++;
         if (node == nullptr)
         {
             return 0;
         }
 
         int lsum, rsum;
-        
+
         lsum = numberNodes(node->left);
         rsum = numberNodes(node->right);
 
@@ -210,18 +234,21 @@ public:
         return getHeight(this->root);
     }
 
-    int getHeight( AvlNode *node )
+    int getHeight(AvlNode *node)
     {
+        arbit_counter++;
         if (node == nullptr)
         {
             return 0;
         }
-        
+
         return 1 + std::max(getHeight(node->left), getHeight(node->right));
     }
 
     AvlNode *getAcronym(std::string sequence, AvlNode *node)
     {
+        this->arbit_counter++;
+
         if (node == nullptr)
         {
             return nullptr;

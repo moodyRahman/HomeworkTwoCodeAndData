@@ -176,6 +176,14 @@ class BinarySearchTree
         }
     }
 
+    int resetCounter()
+    {
+        std::cout << "in the function" << std::endl;
+        std::cout << arbit_counter << std::endl;
+        
+        return arbit_counter;
+    }
+
     struct BinaryNode
     {
         Comparable element;
@@ -188,8 +196,23 @@ class BinarySearchTree
         BinaryNode( Comparable && theElement, BinaryNode *lt, BinaryNode *rt )
           : element{ std::move( theElement ) }, left{ lt }, right{ rt } { }
     };
-
+    int arbit_counter = 0;
     BinaryNode *root;
+
+    int internalPathLength()
+    {
+        return internalPathLength(this->root, 0);
+    }
+    
+    int internalPathLength( BinaryNode *node , int pathdist)
+    {
+        arbit_counter++;
+        if (node == nullptr)
+        {
+            return 0;
+        }
+        return pathdist + internalPathLength(node->left, pathdist+1) + internalPathLength(node->right, pathdist + 1);
+    }
 
     int numberNodes()
     {
@@ -198,6 +221,7 @@ class BinarySearchTree
 
     int numberNodes( BinaryNode *node )
     {
+        arbit_counter++;
         if (node == nullptr)
         {
             return 0;
@@ -218,6 +242,7 @@ class BinarySearchTree
 
     int getHeight( BinaryNode *node )
     {
+        arbit_counter++;
         if (node == nullptr)
         {
             return 0;
@@ -228,6 +253,7 @@ class BinarySearchTree
 
     BinaryNode* getAcronym( std::string sequence, BinaryNode *node )
     {
+        arbit_counter++;
         if (node==nullptr)
         {
             return nullptr;
