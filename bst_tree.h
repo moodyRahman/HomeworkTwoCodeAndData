@@ -191,6 +191,11 @@ class BinarySearchTree
 
     BinaryNode *root;
 
+    int numberNodes()
+    {
+        return numberNodes(this->root);
+    }
+
     int numberNodes( BinaryNode *node )
     {
         if (node == nullptr)
@@ -204,6 +209,21 @@ class BinarySearchTree
         rsum = numberNodes(node->right);
 
         return 1 + lsum + rsum;
+    }
+
+    int getHeight()
+    {
+        return getHeight(this->root);
+    }
+
+    int getHeight( BinaryNode *node )
+    {
+        if (node == nullptr)
+        {
+            return 0;
+        }
+        
+        return 1 + std::max(getHeight(node->left), getHeight(node->right));
     }
 
     BinaryNode* getAcronym( std::string sequence, BinaryNode *node )

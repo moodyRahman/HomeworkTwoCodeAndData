@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <math.h>
 using namespace std;
 
 namespace {
@@ -55,7 +56,10 @@ void TestTree(const string &db_filename, const string &seq_filename, TreeType &a
       }
     }
 
-    std::cout << a_tree.numberNodes(a_tree.root) << std::endl;
+    std::cout << a_tree.numberNodes() << std::endl;
+
+    std::cout << a_tree.getHeight() << std::endl;
+    std::cout <<  std::log2(a_tree.numberNodes()) / a_tree.getHeight() << std::endl;
 }
 
 }  // namespace
