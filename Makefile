@@ -36,7 +36,7 @@ $(PROGRAM_0): $(ALL_OBJ0) $(H_FILES)
 
 ALL_OBJ1=test_tree.o
 PROGRAM_1=test_tree
-$(PROGRAM_1): $(ALL_OBJ1) $(H_FILES)
+$(PROGRAM_1): $(ALL_OBJ1)
 	g++ $(C++FLAG) -o $(EXEC_DIR)/$@ $(ALL_OBJ1) $(INCLUDES) $(LIBS_ALL)
 
 ALL_OBJ2=test_tree_mod.o
