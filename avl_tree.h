@@ -405,8 +405,9 @@ public:
      * Internal method to find the smallest item in a subtree t.
      * Return node containing the smallest item.
      */
-    AvlNode *findMin(AvlNode *t) const
+    AvlNode *findMin(AvlNode *t)
     {
+        arbit_counter++;
         if (t == nullptr)
             return nullptr;
         if (t->left == nullptr)
@@ -418,7 +419,7 @@ public:
      * Internal method to find the largest item in a subtree t.
      * Return node containing the largest item.
      */
-    AvlNode *findMax(AvlNode *t) const
+    AvlNode *findMax(AvlNode *t)
     {
         if (t != nullptr)
             while (t->right != nullptr)

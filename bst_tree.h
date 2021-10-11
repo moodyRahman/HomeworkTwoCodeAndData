@@ -379,8 +379,9 @@ class BinarySearchTree
      * Internal method to find the smallest item in a subtree t.
      * Return node containing the smallest item.
      */
-    BinaryNode * findMin( BinaryNode *t ) const
+    BinaryNode * findMin( BinaryNode *t )
     {
+        arbit_counter++;
         if( t == nullptr )
             return nullptr;
         if( t->left == nullptr )
@@ -392,7 +393,7 @@ class BinarySearchTree
      * Internal method to find the largest item in a subtree t.
      * Return node containing the largest item.
      */
-    BinaryNode * findMax( BinaryNode *t ) const
+    BinaryNode * findMax( BinaryNode *t )
     {
         if( t != nullptr )
             while( t->right != nullptr )
