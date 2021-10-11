@@ -3,11 +3,13 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
 class SequenceMap
 {
 public:
-    std::string recognition_sequence_;
-    std::vector<std::string> enzyme_acronyms_;
+    string recognition_sequence_;
+    vector<string> enzyme_acronyms_;
 
     SequenceMap(const SequenceMap &rhs) = default;
     SequenceMap &operator=(SequenceMap &&rhs) = default;
@@ -22,7 +24,7 @@ public:
      * @param an_enz_acro the enzyme acronym 
      * @param a_rec_seq the corresponing sequence
      */
-    SequenceMap(std::string &an_enz_acro, std::string &a_rec_seq)
+    SequenceMap(string &an_enz_acro, string &a_rec_seq)
     {
         this->recognition_sequence_ = a_rec_seq;
         this->enzyme_acronyms_.push_back(an_enz_acro);
@@ -44,9 +46,9 @@ public:
      * 
      * @param os 
      * @param dt 
-     * @return std::ostream& 
+     * @return ostream& 
      */
-    friend std::ostream &operator<<(std::ostream &os, const SequenceMap &dt)
+    friend ostream &operator<<(ostream &os, const SequenceMap &dt)
     {
         os << dt.recognition_sequence_ << "   :";
         for (auto x : dt.enzyme_acronyms_)
