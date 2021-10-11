@@ -96,6 +96,11 @@ public:
         return contains(x, root);
     }
 
+    bool contains(std::string x)
+    {
+        return this->getAcronym(x) != "Not Found";
+    }
+
     /**
      * Test if the tree is logically empty.
      * Return true if empty, false otherwise.
@@ -143,7 +148,7 @@ public:
     /**
      * Remove x from the tree. Nothing is done if x is not found.
      */
-    void remove(const Comparable &x)
+    void remove(Comparable &x)
     {
         remove(x, root);
     }
@@ -192,6 +197,34 @@ public:
     };
     int arbit_counter = 0;
     AvlNode *root;
+
+    
+    Comparable getNode(std::string seq)
+    {
+        return getNode(seq, root)->element;
+    }
+
+    AvlNode *getNode(std::string sequence, AvlNode *node)
+    {
+        arbit_counter++;
+        if (node==nullptr)
+        {
+            return nullptr;
+        }
+        if ( node->element.recognition_sequence_ == sequence )
+        {
+            return node;
+        }
+        else
+        {
+            if (node->element.recognition_sequence_ < sequence )
+            {
+                return getNode(sequence, node->right);
+            }
+            return getNode(sequence, node->left);
+        }
+    }
+
 
     int internalPathLength()
     {
@@ -318,8 +351,9 @@ public:
      * t is the node that roots the subtree.
      * Set the new root of the subtree.
      */
-    void remove(const Comparable &x, AvlNode *&t)
+    void remove(Comparable &x, AvlNode *&t)
     {
+        arbit_counter++;
         if (t == nullptr)
             return; // Item not found; do nothing
 
