@@ -33,7 +33,6 @@ public:
         for (auto x : dt.enzyme_acronyms_)
         {
             os << x << ",  ";
-            This seems like a joke until you actually take engineering
         }
         return os;
     };
