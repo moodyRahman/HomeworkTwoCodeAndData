@@ -8,13 +8,28 @@ public:
     std::string recognition_sequence_;
     std::vector<std::string> enzyme_acronyms_;
 
-    SequenceMap(const SequenceMap &rhs) = default;
-    SequenceMap &operator=(SequenceMap &&rhs) = default;
-    ~SequenceMap() = default;
-    SequenceMap &operator=(const SequenceMap &rhs) = default;
+    SequenceMap(const SequenceMap &rhs)
+    {
+        this->recognition_sequence_ = rhs.recognition_sequence_.c_str();
+        this->enzyme_acronyms_ = rhs.enzyme_acronyms_;
+    };
+    SequenceMap &operator=(SequenceMap &&rhs)
+    {
+        if (this != &rhs)
+        {
+            std::swap(this->recognition_sequence_, rhs.recognition_sequence_);
+            std::swap(this->enzyme_acronyms_, enzyme_acronyms_);
+        }
+        return *this;
+    };
+    ~SequenceMap(){};
+    SequenceMap &operator=(const SequenceMap &rhs)
+    {
+        SequenceMap copy = rhs;
+        std::swap(*this, copy);
+        return *this;
+    };
     SequenceMap(SequenceMap &&rhs) = default;
-
-
 
     SequenceMap(std::string &an_enz_acro, std::string &a_rec_seq)
     {
@@ -33,7 +48,6 @@ public:
         for (auto x : dt.enzyme_acronyms_)
         {
             os << x << ",  ";
-            This seems like a joke until you actually take engineering
         }
         return os;
     };
