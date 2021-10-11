@@ -114,7 +114,7 @@ namespace
     {
       sum += x;
     }
-
+    std::cout << rec_calls.size() << std::endl;
     std::cout << "5a: " << successful_removes << std::endl;
     std::cout << "5b: " << sum/(float)rec_calls.size() << std::endl;
 
