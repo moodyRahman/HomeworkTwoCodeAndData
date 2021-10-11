@@ -5,6 +5,8 @@
 class SequenceMap
 {
     public:
+        std::string recognition_sequence_;
+        std::vector<std::string> enzyme_acronyms_;
 
         SequenceMap(std::string &an_enz_acro, std::string &a_rec_seq)
         {
@@ -34,7 +36,4 @@ class SequenceMap
                 this->enzyme_acronyms_.push_back(x);
             }
         };
-    private:
-        std::string recognition_sequence_;
-        std::vector<std::string> enzyme_acronyms_;
 };
