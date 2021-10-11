@@ -118,8 +118,7 @@ template <typename TreeType> void TestTree(const string &db_filename, const stri
     std::cout << "6a: " << a_tree.numberNodes() << std::endl;
     std::cout << "6b: " << ((float)a_tree.internalPathLength() / (float)a_tree.numberNodes()) << std::endl;
     std::cout << "6c: " << ((float)a_tree.internalPathLength() / (float)a_tree.numberNodes()) / std::log2(a_tree.numberNodes()) << std::endl;
-
-    std::cout << "" << std::endl;
+    
   }
 
 }  // namespace
