@@ -206,6 +206,7 @@ class BinarySearchTree
           : element{ std::move( theElement ) }, left{ lt }, right{ rt } { }
     };
     int arbit_counter = 0;
+    int rm_counter = 0;
     BinaryNode *root;
 
 
@@ -423,7 +424,7 @@ class BinarySearchTree
      */
     void remove( Comparable & x, BinaryNode * & t )
     {
-        arbit_counter++;
+        rm_counter++;
         if( t == nullptr )
             return;   // Item not found; do nothing
         if( x < t->element )
@@ -449,7 +450,7 @@ class BinarySearchTree
      */
     BinaryNode * findMin( BinaryNode *t )
     {
-        arbit_counter++;
+        rm_counter++;
         if( t == nullptr )
             return nullptr;
         if( t->left == nullptr )

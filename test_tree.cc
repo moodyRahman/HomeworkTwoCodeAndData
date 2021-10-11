@@ -100,7 +100,7 @@ namespace
       if ((c % 2 == 0) && a_tree.contains(line))
       {
         auto m = a_tree.getNode(line);
-        a_tree.arbit_counter = 0;
+        a_tree.rm_counter = 0;
         a_tree.remove(m);
         rec_calls.push_back(a_tree.arbit_counter);
         successful_removes++;
@@ -116,7 +116,7 @@ namespace
     }
 
     std::cout << "5a: " << successful_removes << std::endl;
-    std::cout << "5b: " << sum/(float)rec_calls.size() << std::endl;
+    std::cout << "5b: " << sum/(float)successful_removes << std::endl;
 
     std::cout << "6a: " << a_tree.numberNodes() << std::endl;
     std::cout << "6b: " << ((float)a_tree.internalPathLength() / (float)a_tree.numberNodes()) << std::endl;

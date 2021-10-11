@@ -198,6 +198,7 @@ public:
             : element{std::move(ele)}, left{lt}, right{rt}, height{h} {}
     };
     int arbit_counter = 0;
+    int rm_counter = 0;
     AvlNode *root;
 
     /**
@@ -410,7 +411,7 @@ public:
      */
     void remove(Comparable &x, AvlNode *&t)
     {
-        arbit_counter++;
+        rm_counter++;
         if (t == nullptr)
             return; // Item not found; do nothing
 
@@ -464,7 +465,7 @@ public:
      */
     AvlNode *findMin(AvlNode *t)
     {
-        arbit_counter++;
+        rm_counter++;
         if (t == nullptr)
             return nullptr;
         if (t->left == nullptr)

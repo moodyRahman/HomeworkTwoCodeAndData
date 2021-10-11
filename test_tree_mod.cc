@@ -97,7 +97,7 @@ template <typename TreeType> void TestTree(const string &db_filename, const stri
       if ((c % 2 == 0) && a_tree.contains(line))
       {
         auto m = a_tree.getNode(line);
-        a_tree.arbit_counter = 0;
+        a_tree.rm_counter = 0;
         a_tree.remove(m);
         rec_calls.push_back(a_tree.arbit_counter);
         successful_removes++;
