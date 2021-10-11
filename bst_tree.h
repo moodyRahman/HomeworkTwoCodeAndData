@@ -160,6 +160,13 @@ class BinarySearchTree
         remove( x, root );
     }
 
+    
+    /**
+     * @brief get a string of the corresponding acronyms to a sequence
+     * 
+     * @param sequence 
+     * @return std::string 
+     */
     std::string getAcronym( std::string sequence )
     {
         auto x = getAcronym(sequence, root);
@@ -177,19 +184,15 @@ class BinarySearchTree
                 out += " ";
             }
 
-            return out;
+            return out + " ";
         }
     }
 
-    int resetCounter()
-    {
-        std::cout << "in the function" << std::endl;
-        std::cout << arbit_counter << std::endl;
-        
-        return arbit_counter;
-    }
 
-
+    /**
+     * @brief private struct for an internally used BinaryNode
+     * 
+     */
     struct BinaryNode
     {
         Comparable element;
@@ -205,11 +208,28 @@ class BinarySearchTree
     int arbit_counter = 0;
     BinaryNode *root;
 
+
+    /**
+     * @brief wrapper for recursive getNode
+     * 
+     * 
+     * @param seq 
+     * @return Comparable 
+     */
     Comparable getNode(std::string seq)
     {
         return getNode(seq, root)->element;
     }
 
+
+    /**
+     * @brief returns itself if the requested sequence is found, otherwise
+     * searches it's children nodes
+     * 
+     * @param sequence 
+     * @param node 
+     * @return BinaryNode* 
+     */
     BinaryNode *getNode(std::string sequence, BinaryNode *node)
     {
         arbit_counter++;
@@ -231,11 +251,25 @@ class BinarySearchTree
         }
     }
 
+
+    /**
+     * @brief wrapper for recursice internalPathLength
+     * 
+     * @return int 
+     */
     int internalPathLength()
     {
         return internalPathLength(this->root, 0);
     }
-    
+
+
+    /**
+     * @brief 
+     * 
+     * @param node 
+     * @param pathdist 
+     * @return int 
+     */
     int internalPathLength( BinaryNode *node , int pathdist)
     {
         arbit_counter++;
@@ -246,11 +280,24 @@ class BinarySearchTree
         return pathdist + internalPathLength(node->left, pathdist+1) + internalPathLength(node->right, pathdist + 1);
     }
 
+
+    /**
+     * @brief wrapper for recursive numberNodes
+     * 
+     * 
+     */
     int numberNodes()
     {
         return numberNodes(this->root);
     }
 
+
+    /**
+     * @brief calculates the number of children nodes, and adds one for the parent
+     * 
+     * @param node 
+     * @return int 
+     */
     int numberNodes( BinaryNode *node )
     {
         arbit_counter++;
@@ -267,11 +314,24 @@ class BinarySearchTree
         return 1 + lsum + rsum;
     }
 
+
+    /**
+     * @brief wrapper for the height
+     * 
+     * 
+     */
     int getHeight()
     {
         return getHeight(this->root);
     }
 
+
+    /**
+     * @brief Calculate the total height of a tree
+     * 
+     * @param node 
+     * @return int 
+     */
     int getHeight( BinaryNode *node )
     {
         arbit_counter++;
@@ -283,6 +343,14 @@ class BinarySearchTree
         return 1 + std::max(getHeight(node->left), getHeight(node->right));
     }
 
+
+    /**
+     * @brief recursive search function for acronyms 
+     * 
+     * @param sequence 
+     * @param node 
+     * @return BinaryNode* 
+     */
     BinaryNode* getAcronym( std::string sequence, BinaryNode *node )
     {
         arbit_counter++;
@@ -395,6 +463,7 @@ class BinarySearchTree
      */
     BinaryNode * findMax( BinaryNode *t )
     {
+        arbit_counter++;
         if( t != nullptr )
             while( t->right != nullptr )
                 t = t->right;

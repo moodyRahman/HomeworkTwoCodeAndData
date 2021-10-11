@@ -24,7 +24,7 @@ using namespace std;
 // Throws UnderflowException as warranted
 
 template <typename Comparable>
-class AvlTree   
+class AvlTree
 {
 public:
     AvlTree() : root{nullptr}
@@ -170,18 +170,15 @@ public:
                 out += " ";
             }
 
-            return out;
+            return out + " ";
         }
     }
 
-    int resetCounter()
-    {
-        std::cout << "in the function" << std::endl;
-        std::cout << arbit_counter << std::endl;
-        
-        return arbit_counter;
-    }
 
+    /**
+     * @brief private struct for an internally used AvlNode
+     * 
+     */
     struct AvlNode
     {
         Comparable element;
@@ -198,26 +195,42 @@ public:
     int arbit_counter = 0;
     AvlNode *root;
 
-    
+
+    /**
+     * @brief wrapper for recursive getNode
+     * 
+     * 
+     * @param seq 
+     * @return Comparable 
+     */
     Comparable getNode(std::string seq)
     {
         return getNode(seq, root)->element;
     }
 
+
+    /**
+     * @brief returns itself if the requested sequence is found, otherwise
+     * searches it's children nodes
+     * 
+     * @param sequence 
+     * @param node 
+     * @return AvlNode* 
+     */
     AvlNode *getNode(std::string sequence, AvlNode *node)
     {
         arbit_counter++;
-        if (node==nullptr)
+        if (node == nullptr)
         {
             return nullptr;
         }
-        if ( node->element.recognition_sequence_ == sequence )
+        if (node->element.recognition_sequence_ == sequence)
         {
             return node;
         }
         else
         {
-            if (node->element.recognition_sequence_ < sequence )
+            if (node->element.recognition_sequence_ < sequence)
             {
                 return getNode(sequence, node->right);
             }
@@ -226,11 +239,24 @@ public:
     }
 
 
+    /**
+     * @brief wrapper for recursice internalPathLength
+     * 
+     * @return int 
+     */
     int internalPathLength()
     {
         return internalPathLength(this->root, 0);
     }
 
+
+    /**
+     * @brief 
+     * 
+     * @param node 
+     * @param pathdist 
+     * @return int 
+     */
     int internalPathLength(AvlNode *node, int pathdist)
     {
         arbit_counter++;
@@ -241,11 +267,24 @@ public:
         return pathdist + internalPathLength(node->left, pathdist + 1) + internalPathLength(node->right, pathdist + 1);
     }
 
+
+    /**
+     * @brief wrapper for recursive numberNodes
+     * 
+     * 
+     */
     int numberNodes()
     {
         return numberNodes(this->root);
     }
 
+
+    /**
+     * @brief calculates the number of children nodes, and adds one for the parent
+     * 
+     * @param node 
+     * @return int 
+     */
     int numberNodes(AvlNode *node)
     {
         arbit_counter++;
@@ -262,11 +301,24 @@ public:
         return 1 + lsum + rsum;
     }
 
+
+    /**
+     * @brief wrapper for the height
+     * 
+     * 
+     */
     int getHeight()
     {
         return getHeight(this->root);
     }
 
+
+    /**
+     * @brief Calculate the total height of a tree
+     * 
+     * @param node 
+     * @return int 
+     */
     int getHeight(AvlNode *node)
     {
         arbit_counter++;
@@ -278,6 +330,14 @@ public:
         return 1 + std::max(getHeight(node->left), getHeight(node->right));
     }
 
+
+    /**
+     * @brief recursive search function for acronyms 
+     * 
+     * @param sequence 
+     * @param node 
+     * @return AvlNode* 
+     */
     AvlNode *getAcronym(std::string sequence, AvlNode *node)
     {
         this->arbit_counter++;
@@ -554,7 +614,7 @@ public:
         k3->left = r->right;
         r->right = k3;
 
-        //re-adjust the height after changing the pointers  
+        //re-adjust the height after changing the pointers
         l->height = max(height(l->left), height(l->right)) + 1;
         k3->height = max(height(k3->left), height(k3->right)) + 1;
         r->height = max(l->height, k3->height) + 1;
