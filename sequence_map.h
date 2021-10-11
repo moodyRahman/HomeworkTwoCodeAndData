@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SEQUENCE_MAP_H
+#define SEQUENCE_MAP_H
 #include <iostream>
 #include <vector>
 
@@ -68,3 +69,5 @@ public:
         }
     };
 };
+
+#endif
