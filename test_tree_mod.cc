@@ -99,7 +99,7 @@ template <typename TreeType> void TestTree(const string &db_filename, const stri
         auto m = a_tree.getNode(line);
         a_tree.rm_counter = 0;
         a_tree.remove(m);
-        rec_calls.push_back(a_tree.arbit_counter);
+        rec_calls.push_back(a_tree.rm_counter);
         successful_removes++;
       }
       c++;

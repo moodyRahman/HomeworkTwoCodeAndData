@@ -424,7 +424,7 @@ class BinarySearchTree
      */
     void remove( Comparable & x, BinaryNode * & t )
     {
-        rm_counter++;
+        rm_counter+=1;
         if( t == nullptr )
             return;   // Item not found; do nothing
         if( x < t->element )
@@ -433,6 +433,7 @@ class BinarySearchTree
             remove( x, t->right );
         else if( t->left != nullptr && t->right != nullptr ) // Two children
         {
+            rm_counter+=1;
             t->element = findMin( t->right )->element;
             remove( t->element, t->right );
         }
@@ -450,7 +451,7 @@ class BinarySearchTree
      */
     BinaryNode * findMin( BinaryNode *t )
     {
-        rm_counter++;
+
         if( t == nullptr )
             return nullptr;
         if( t->left == nullptr )

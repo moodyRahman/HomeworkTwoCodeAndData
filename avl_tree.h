@@ -411,7 +411,7 @@ public:
      */
     void remove(Comparable &x, AvlNode *&t)
     {
-        rm_counter++;
+        rm_counter+=1;
         if (t == nullptr)
             return; // Item not found; do nothing
 
@@ -421,6 +421,7 @@ public:
             remove(x, t->right);
         else if (t->left != nullptr && t->right != nullptr) // Two children
         {
+            rm_counter += 1;
             t->element = findMin(t->right)->element;
             remove(t->element, t->right);
         }
@@ -465,7 +466,6 @@ public:
      */
     AvlNode *findMin(AvlNode *t)
     {
-        rm_counter++;
         if (t == nullptr)
             return nullptr;
         if (t->left == nullptr)

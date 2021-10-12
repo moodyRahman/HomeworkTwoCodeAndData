@@ -102,18 +102,18 @@ namespace
         auto m = a_tree.getNode(line);
         a_tree.rm_counter = 0;
         a_tree.remove(m);
-        rec_calls.push_back(a_tree.arbit_counter);
+        rec_calls.push_back(a_tree.rm_counter);
         successful_removes++;
       }
       c++;
     }
 
     sum = 0;
-
     for (auto x : rec_calls)
     {
       sum += x;
     }
+
 
     std::cout << "5a: " << successful_removes << std::endl;
     std::cout << "5b: " << sum/(float)successful_removes << std::endl;
